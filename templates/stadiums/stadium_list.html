@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block title %}STADIUM LIST{% endblock title %}
+
+
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+            <th>STADIUM NAME</th>
+            <th>STADIUM LOCATION</th>
+            <th>STADIUM SPONSOR</th>
+            <th>STADIUM STATUS</th>
+        </thead>
+        {% for GStadium in GameStadium %}
+            <tr>
+                <td>{{ GStadium.name }}</td>
+                <td>{{ GStadium.location }}</td>
+                <td>{{ GStadium.sponsor }}</td>
+                <td>{{ GStadium.status }}</td>
+                <td><a class="btn btn-outline-primary mb-3">Detail</a></td>
+                <td><a href="{% url 'gamestadium:update_stadium' GStadium.pk %}" class="btn btn-outline-warning mb-3">Update</a></td>
+                <td><a href="{% url 'gamestadium:delete_stadium' GStadium.pk %}"class="btn btn-outline-danger mb-3">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div>
+        <td><a href="{% url 'gamestadium:create_stadium'%}" class="btn btn-outline-warning mb-3">Registrar Estadio</a></td>
+    </div>
+{% endblock content %}

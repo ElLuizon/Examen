@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block title %}PLAYER LIST{% endblock title %}
+
+
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+            <th>PLAYER NAME</th>
+            <th>PLAYER TEAM</th>
+            <th>PLAYER POSITION</th>
+            <th>PLAYER NUMBER</th>
+            <th>PLAYER STATUS</th>
+        </thead>
+        {% for Player in Players %}
+            <tr>
+                <td>{{ Player.name }}</td>
+                <td>{{ Player.team }}</td>
+                <td>{{ Player.position }}</td>
+                <td>{{ Player.number }}</td>
+                <td>{{ Player.status }}</td>
+                <td><a href="{% url 'player:update_player' Player.pk %}" class="btn btn-outline-warning mb-3">Update</a></td>
+                <td><a href="{% url 'player:delete_player' Player.pk %}" class="btn btn-outline-danger mb-3">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div>
+        <td><a href="{% url 'player:create_player'%}" class="btn btn-outline-warning mb-3">Crear Jugador</a></td>
+    </div>
+{% endblock content %}

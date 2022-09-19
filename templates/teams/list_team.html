@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+
+{% block title %}LIST TEAMS{% endblock title %}
+
+
+{% block content %}
+    <table class="table table-striped">
+        <thead>
+            <th>TEAM NAME</th>
+        </thead>
+        {% for Team in Teams %}
+            <tr>
+                <td>{{ Team.name }}</td>
+                <td><a href="{% url 'Teams:update_team' Team.pk %}" class="btn btn-outline-warning mb-3">Update</a></td>
+                <td><a href="{% url 'Teams:delete_team' Team.pk %}" class="btn btn-outline-danger mb-3">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <div>
+        <td><a href="{% url 'Teams:create_team' %}" class="btn btn-outline-warning mb-3">Crear Equipo</a></td>
+    </div>
+{% endblock content %}

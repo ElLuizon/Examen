@@ -1,0 +1,12 @@
+{% extends 'base/base.html' %}
+
+{% block title %}REGISTER NEW PLAYER{% endblock title %}
+
+{% block content %}
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-outline-success mb-3 form-control">Create</button>
+        <a href="{% url 'player:player_list' %}" class="btn btn-outline-info mb-3 form-control">Cancel</a>
+    </form>
+{% endblock content %}
